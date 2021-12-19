@@ -1,0 +1,13 @@
+-
+  name: install httpd application
+  hosts: client1
+  tasks:
+      - name: install the httpd application
+        yum:
+          name: httpd
+          state: present
+
+      - name: start services
+        service:
+          name: httpd
+          state: started

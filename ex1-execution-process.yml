@@ -1,0 +1,8 @@
+-
+  name: sample-execution
+  hosts: client1
+  tasks:
+    - name: install of git
+      yum:
+        name: git
+        state: present

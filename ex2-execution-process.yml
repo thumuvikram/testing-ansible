@@ -1,0 +1,9 @@
+-
+  name: removal program
+  hosts: client1
+  tasks:
+    - name: removal tasks
+      yum:
+        name: git
+        state: absent
+        

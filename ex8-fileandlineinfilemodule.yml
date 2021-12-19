@@ -1,0 +1,20 @@
+-
+  name: excercise on file and lineinfile module
+  hosts: all
+  tasks:
+    - name: code to create directory
+      file:
+        path: /opt/india
+        state: directory
+
+    - name: code to create a file russia.txt
+      file:
+        path: /opt/india/russia.txt
+        state: touch
+
+    - name: write hello world into file of russia
+      lineinfile:
+        path: /opt/india/russia.txt
+        line: 'Hello World'
+        mode: 0766
+  

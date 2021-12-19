@@ -1,0 +1,4 @@
+---
+  - import_playbook: /root/ansible-20B/ex3-docker-install.yml
+
+  - import_playbook: /root/ansible-20B/ex7-file-module.yml
