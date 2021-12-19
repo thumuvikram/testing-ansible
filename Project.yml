@@ -1,0 +1,60 @@
+-
+  name: project dynmaic to static IP
+  hosts: client2
+  vars:
+    ip: 192.168.43.100
+    dns1: 192.168.43.1
+    dns2: 8.8.8.8
+    gw: 192.168.43.1
+  tasks:
+    - name: change the computer change
+      command: hostnamectl set-hostname ansible-node2
+
+    - name: update os host file
+      lineinfile:
+        path: /etc/hosts
+        state: present
+        line: "192.168.43.100 ansible-node2\n192.168.43.200 ansible-server"
+
+    - name: updates in adapter file
+      lineinfile:
+        path: /etc/sysconfig/network-scripts/ifcfg-enp0s3
+        state: absent
+        line: 'BOOTPROTO=dhcp'
+
+    - name: updates in adapter file
+      lineinfile:
+        path: /etc/sysconfig/network-scripts/ifcfg-enp0s3
+        state: present
+        line: 'BOOTPROTO=static'
+
+    - name: updates in adapter file
+      lineinfile:
+        path: /etc/sysconfig/network-scripts/ifcfg-enp0s3
+        state: absent
+        line: 'ONBOOT=no'
+
+    - name: updates in adapter file
+      lineinfile:
+        path: /etc/sysconfig/network-scripts/ifcfg-enp0s3
+        state: present
+        line: 'ONBOOT=yes'
+
+    - name: updates in adapter file
+      lineinfile:
+        path: /etc/sysconfig/network-scripts/ifcfg-enp0s3
+        state: present
+        line: "IPADDR={{ip}}\nDNS1={{dns1}}\nDNS2={{dns2}}\nGATEWAY={{gw}}"
+
+    - name: restart the pc to impact all the changes
+      command: shutdown now
+
+-
+  name: updates on server
+  hosts: localhost
+  tasks:
+    - name: update new changes into host inventory file of ansible
+      lineinfile:
+        path: /etc/ansible/hosts
+        state: present
+        line: 'client3 ansible_host=192.168.43.100 ansible_connection=ssh ansible_port=22 ansible_user=root ansible_ssh_pass=thumu1234'

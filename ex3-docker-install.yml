@@ -1,0 +1,17 @@
+-
+  name: play1 on installation
+  hosts: client1
+  tasks:
+    - name: code to install docker
+      yum:
+        name: docker
+        state: present
+
+-
+  name: play 2 on services
+  hosts: client1
+  tasks:
+    - name: code to start docker services
+      service:
+        name: docker
+        state: started

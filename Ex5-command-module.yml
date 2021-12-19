@@ -1,0 +1,7 @@
+-
+  name: PB on command module
+  hosts: client1
+  tasks:
+    - name: below code to uninstall of httpd application
+      command: yum remove -y httpd
+  

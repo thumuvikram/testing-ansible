@@ -1,0 +1,13 @@
+-
+  name: fiel module exercise
+  hosts: client1
+  tasks:
+    - name: create a file under /opt
+      file:
+        path: /opt/notes.txt
+        state: touch
+
+    - name: write hello world into file
+      copy:
+        content: 'HELLO WORLD'
+        dest: /opt/notes.txt

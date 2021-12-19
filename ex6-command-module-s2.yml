@@ -1,0 +1,10 @@
+-
+  name: creating a folder
+  hosts: client1
+  tasks:
+    - name: creating a folder india
+      command: mkdir /opt/india
+
+    - name: making a file
+      command: touch /opt/india/ts.txt
+    

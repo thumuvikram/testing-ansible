@@ -1,0 +1,19 @@
+-
+  name: pd on use case of variables
+  hosts: all
+  vars:
+    a: 10
+    b: 20.05
+    c: "AP28DC0505"
+    d: "India"
+  tasks:
+    - name: code to create a file variables.txt at /opt
+      file:
+        path: /opt/variables.txt
+        state: touch
+
+    - name: code to write the values of variable into the file
+      lineinfile:
+        path: /opt/variables.txt
+        line: 'The value of A is {{a}} and B is {{b}} and c is {{c}} and d is {{d}}'
+        state: present

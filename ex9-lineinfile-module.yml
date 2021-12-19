@@ -1,0 +1,10 @@
+-
+  name: pb for to replace content
+  hosts: all
+  tasks:
+    - name: replace content
+      lineinfile:
+        path: /opt/india/russia.txt
+        state: present
+        regexp: "Hello World"
+        line: "india is great"
